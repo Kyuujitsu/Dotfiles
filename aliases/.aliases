@@ -1,0 +1,90 @@
+# List all files colorized in long format, including dot files
+alias ls="ls --color"
+alias ll="ls -l"
+alias l="ls -l"
+alias la="ls -la"
+
+# List only directories
+alias lsd='ls -l | grep "^d"'
+
+alias preview="fzf --preview 'bat --color \"always\" {}'"
+alias help="tldr"
+
+# Inform tmux to support UTF-8 explicitly 
+alias tmux='tmux -u'
+alias less='/usr/bin/less -FXRS'
+
+# Get the weather
+alias wt="curl wttr.in/moscow"
+
+# GIT STUFF
+
+alias g="git"
+alias gco="git checkout "
+alias gst="git status"
+
+# Undo a `git push`
+alias undopush="git push -f origin HEAD^:master"
+gd() { git diff $* | view -; }
+gdc() { gd --cached $*; }
+
+# git root
+alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+alias pygrep="grep --include='*.py' $*"
+alias rbgrep="grep --include='*.rb' $*"
+alias r="rails"
+alias rt="script/test $*"
+alias f="script/features $*"
+
+# Easier navigation: .., ..., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias -- -="cd -"
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+# Enhanced WHOIS lookups
+alias whois="whois -h whois-servers.net"
+
+# View HTTP traffic
+alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
+alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# File size
+alias fs="stat -f \"%z bytes\""
+
+# ROT13-encode text. Works for decoding, too! ;)
+alias rot13='tr a-zA-Z n-za-mN-ZA-M'
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
+
+# RAILS STUFF
+alias be='bundle exec'
+alias bi='bundle install'
+alias bibs='bundle install --binstubs'
+alias bu='bundle update'
+alias cbdev='export CBDEV=1'         # turn chef cookbook development on
+alias nocbdev='export CBDEV=0'       # turn chef cookbook development off
+alias gemdev='export GEMDEV=1'       # turn gem development on
+alias nogemdev='export GEMDEV=0'     # turn gem development off
+alias verbose='export VERBOSE=1'     # turn verbose on
+alias noverbose='export VERBOSE=0'   # turn verbose off
+alias rgs='rvm --force gemset empty' # reset-gemset
+
+alias updatetags='ctags -R --exclude=.git --exclude=log *'
+
+# Password generator
+alias randpass="openssl rand -hex 6"

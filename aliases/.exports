@@ -1,0 +1,17 @@
+#export GOROOT=/usr/local/go
+
+# add support for ctrl+o to open selected file in VS Code
+export FZF_DEFAULT_OPTS="--bind='ctrl-o:execute(vim {})+abort'"
+
+export PATH="/home/linuxbrew/.linuxbrew/bin:/home/master/go/bin:/home/master/bin:$PATH"
+
+export LDFLAGS="-L/home/linuxbrew/.linuxbrew/opt/isl@0.18/lib"
+export CPPFLAGS="-I/home/linuxbrew/.linuxbrew/opt/isl@0.18/include"
+
+export PATH=$PATH:$HOME/bin
+export GOBIN=$HOME/go/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOBIN
+export CARGOBIN=$HOME/.cargo/bin
+export PATH=$PATH:$CARGOBIN
+#export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
