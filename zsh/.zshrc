@@ -1,5 +1,5 @@
 # Pure theme installation
-fpath=( "$HOME/.dotfiles/zfunctions/pure" $fpath )
+fpath=( "$HOME/.zfunctions/pure" $fpath )
 # completions
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
